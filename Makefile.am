@@ -2,16 +2,17 @@
 # Build sources
 ###
 
-ACLOACL_AMDFLAGS = -I m4 -I include
+ACLOCAL_AMFLAGS = -I m4 -I include
 
-AM_CPPFLAGS = -I{$(top_builddir)/src -I$(top_builddir)/include
+AM_CPPFLAGS = -I$(top_builddir)/src -I$(top_builddir)/include
 
-include_HEADERS = include/gpu_dgemm.h
+include_HEADERS = include/libgpublas.h
 
-lib_LTLIBRARIES = lib_gpu_blas.h
+lib_LTLIBRARIES = libgpublas.la
 
 
-libgpublas_la_SOURCES = src/gpu_dgemm.cpp
+libgpublas_la_SOURCES = "" 
+libgpublas_la_SOURCES += src/gpublas.cpp
 
 if HAVE_CUBLAS
 	libgpublas_la_SOURCES += src/cublas.cpp
@@ -26,3 +27,7 @@ endif
 if HAVE_OMPBLAS
 	libgpublas_la_SOURCES += src/ompblas.cpp
 endif
+
+
+METASOURCES=auto
+

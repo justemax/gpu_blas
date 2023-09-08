@@ -1,2 +1,2 @@
 #!/bin/bash
-autoconf --force -is
+autoreconf --force -is

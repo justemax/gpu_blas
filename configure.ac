@@ -17,7 +17,7 @@ AC_ENABLE_SHARED
 AC_ENABLE_STATIC
 
 
-#CXXFLAGS="-Iinclude ${CXXFLAGS}"
+CXXFLAGS="-Iinclude ${CXXFLAGS}"
 
 AC_CHECK_LIB([c], [exit], ,AC_MSG_ERROR([C lib not found]))
 
@@ -56,7 +56,7 @@ AS_IF([ test "x$have_cublas" = "xyes"],[
        AC_DEFINE([HAVE_CUBLAS], [1], [Enable cublas])
        case $CXX in
 	       *nvcc*)
-			CXXFLAGS="-lcublas"
+			CXXFLAGS="$CXXFLAGS -lcublas"
 		;;
 		*)
 			AC_MSG_NOTICE([You don't use nvcc fgor cublas, don't forget to set the CXX flags])
@@ -101,9 +101,9 @@ AS_IF([ test "x$have_ompblas" = "xyes"],[
 
 
 
-AM_CONDITIONAL([HAVE_CUBLAS], [test "x$have_cublas"])
-AM_CONDITIONAL([HAVE_ROCBLAS], [test "x$have_rocblas"])
-AM_CONDITIONAL([HAVE_OMPBLAS], [test "x$have_ompblas"])
+AM_CONDITIONAL([HAVE_CUBLAS], [test "x$have_cublas" = "xyes"])
+AM_CONDITIONAL([HAVE_ROCBLAS], [test "x$have_rocblas" = "xyes"])
+AM_CONDITIONAL([HAVE_OMPBLAS], [test "x$have_ompblas" = "xyes"])
 
 AC_MSG_NOTICE([
 ----------------------------------------------

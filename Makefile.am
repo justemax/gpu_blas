@@ -15,17 +15,13 @@ libgpublas_la_SOURCES = ""
 libgpublas_la_SOURCES += src/gpublas.cpp
 
 if HAVE_CUBLAS
-	libgpublas_la_SOURCES += src/cublas.cpp
+  libgpublas_la_SOURCES += src/cublas.cpp
 endif
-
-
 if HAVE_ROCBLAS
-	libgpublas_la_SOURCES += src/rocblas.cpp
-
+  libgpublas_la_SOURCES += src/rocblas.cpp
 endif
-
 if HAVE_OMPBLAS
-	libgpublas_la_SOURCES += src/ompblas.cpp
+  libgpublas_la_SOURCES += src/ompblas.cpp
 endif
 
 

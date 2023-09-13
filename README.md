@@ -22,11 +22,9 @@ The library is not intended to provide a complete offload interface (It does not
 
 To install the library 
 
-<code> 
-	./autogen.sh
+<code> 	./autogen.sh
 	./configure --enable-[openmp|cublas|rocblas] CXX=[Your compiler] --prefix=[Install directory]
-	make; make install
-</code> 
+	make; make install </code> 
 
 It is important to specify the compiler. Otherwise it takes the system default.
 

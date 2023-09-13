@@ -4,10 +4,11 @@
  *
  *
  */
-
-//#include "include/libgpublas.h"
+#ifdef HAVE_ROCBLAS
 #include "include/rocblas.hpp"
-//#include "include/cublas.hpp"
+#elif HAVE_CUBLAS
+#include "include/cublas.hpp"
+#endif
 
 
 

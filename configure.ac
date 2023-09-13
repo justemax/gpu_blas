@@ -55,8 +55,9 @@ AC_ARG_WITH([ompblas],
 AS_IF([ test "x$have_cublas" = "xyes"],[
        AC_DEFINE([HAVE_CUBLAS], [1], [Enable cublas])
        case $CXX in
-	       *nvcc*)
+	       *nvc++*)
 			CXXFLAGS="$CXXFLAGS -lcublas"
+			CFLAGS="$CFLAGS -lcublas"
 		;;
 		*)
 			AC_MSG_NOTICE([You don't use nvcc fgor cublas, don't forget to set the CXX flags])
@@ -83,13 +84,13 @@ AS_IF([ test "x$have_ompblas" = "xyes"],[
        AC_DEFINE([HAVE_OMPBLAS], [1], [Enable ompblas])
        case $CXX in
 		*g++*)
-			CFLAGS="$CXXLAGS -fopenmp -foffload=-lm"
+			CXXFLAGS="$CXXLAGS -fopenmp -foffload=-lm"
 			;;
 		*nvcc*)
-			CFLAGS="$CXXLAGS -mp=gpu,noautopar"
+			CXXFLAGS="$CXXLAGS -mp=gpu,noautopar"
 			;;
 		*clang++*)
-			CFLAGS="$CXXLAGS -fopenmp "
+			CXXFLAGS="$CXXLAGS -fopenmp "
 			;;
 
 

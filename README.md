@@ -30,7 +30,7 @@ It is important to specify the compiler. Otherwise it takes the system default.
 
 The default flags to support libs are set to the following combinations:
 
-	- cublas / nvcc
+	- cublas / nvc++
 	- rocblas / hipcc
 	- rocblas / clang++
 	- openmp / hipcc

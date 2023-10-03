@@ -1,4 +1,5 @@
 #include <cublas_v2.h>
+#include "libgpublas.h"
 void cublas_manage_error(int error_number);
 
 cublasHandle_t init_cublas();

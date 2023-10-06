@@ -1,4 +1,4 @@
-#include "include/rocblas.hpp"
+#include "../include/rocblas.hpp"
 
 #include <rocblas/rocblas.h>
 void* init_rocblas()

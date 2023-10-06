@@ -17,6 +17,7 @@ typedef __half half ;
 #endif
 
 
+// Xgemm
 
 extern "C" int gpu_dgemm(char transA, char transB, int64_t m, int64_t n, int64_t k, double alpha, double* A, int64_t lda,\
 		double* B, int64_t ldb, double beta, double* C, int64_t ldc)
@@ -52,4 +53,54 @@ extern "C" int gpu_zgemm(char transA, char transB, int64_t m, int64_t n, int64_t
 	zgemm(transA, transA, m, n, k, alpha, A, lda, B, ldb, beta, C, ldc);
 	return 0;    
 }
+
+
+//Xsymm
+
+extern "C" int gpu_ssymm(char SIDE, char UPLO, int m, int n, float alpha, float* A, int lda, float* B, int ldb, float beta, float* C, int ldc)
+{
+	ssymm(SIDE, UPLO, m, n, alpha, A, lda, B, ldb, beta, C, ldc); 
+	return 0;
+}
+
+
+
+
+
+
+extern "C" int gpu_dsymm(char SIDE, char UPLO, int m, int n, double alpha, double* A, int lda, double* B, int ldb, double beta, double* C, int ldc)
+{
+	dsymm(SIDE, UPLO, m, n, alpha, A, lda, B, ldb, beta, C, ldc); 
+	return 0;
+}
+
+extern "C" int gpu_csymm(char SIDE, char UPLO, int m, int n, float_complex alpha, float_complex* A, int lda, float_complex* B, int ldb, float_complex beta, float_complex* C, int ldc)
+{
+	csymm(SIDE, UPLO, m, n, alpha, A, lda, B, ldb, beta, C, ldc); 
+	return 0;
+}
+
+
+extern "C" int gpu_zsymm(char SIDE, char UPLO, int m, int n, double_complex alpha, double_complex* A, int lda, double_complex* B, int ldb, double_complex beta, double_complex* C, int ldc)
+{
+	zsymm(SIDE, UPLO, m, n, alpha, A, lda, B, ldb, beta, C, ldc); 
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

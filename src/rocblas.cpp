@@ -9,6 +9,34 @@ void* init_rocblas()
 	return handle;
 }
 
+
+
+rocblas_fill convert_uplo(char uplo)
+{
+	rocblas_fill ret;
+	if(uplo == 'U' || uplo == 'u')
+		ret = rocblas_fill_upper;
+	else if(uplo == 'L' || uplo == 'l')
+		ret = rocblas_fill_lower;
+	else
+		ret = rocblas_fill_full;
+
+	return ret;
+}
+
+rocblas_side convert_side(char side)
+{
+	rocblas_side ret;
+	if(side == 'L' || side == 'l')
+		ret = rocblas_side_left;
+	else if(side == 'R' || side == 'l')
+		ret = rocblas_side_right;
+	else
+		ret = rocblas_side_both;
+	return ret;
+
+}
+
 void dgemm(char transA, char transB, int M, int N, int K, double ALPHA, double* A, int LDA, double* B, int LDB, double BETA, double* C, int LDC)
 {
 
@@ -83,3 +111,65 @@ void zgemm(char transA, char transB, int M, int N, int K, double_complex ALPHA, 
 	}
 		
 }
+
+
+
+
+
+void ssymm(char SIDE, char UPLO, int m, int n, float alpha, float* A, int lda, float* B, int ldb, float beta, float* C, int ldc)
+{
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret =rocblas_ssymm((rocblas_handle)handle, convert_side(SIDE), convert_uplo(UPLO), m, n, &alpha, A, lda, B, ldb, &beta, C, ldc);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+	
+}
+
+void dsymm(char SIDE, char UPLO, int m, int n, double alpha, double* A, int lda, double* B, int ldb, double beta, double* C, int ldc)
+{
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret =rocblas_dsymm((rocblas_handle)handle, convert_side(SIDE), convert_uplo(UPLO), m, n, &alpha, A, lda, B, ldb, &beta, C, ldc);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+	
+}
+void csymm(char SIDE, char UPLO, int m, int n, float_complex alpha, float_complex* A, int lda, float_complex* B, int ldb, float_complex beta, float_complex* C, int ldc)
+{
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret =rocblas_csymm((rocblas_handle)handle, convert_side(SIDE), convert_uplo(UPLO), m, n, &alpha, A, lda, B, ldb, &beta, C, ldc);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+	
+}
+void zsymm(char SIDE, char UPLO, int m, int n, double_complex alpha, double_complex* A, int lda, double_complex* B, int ldb, double_complex beta, double_complex* C, int ldc)
+{
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret =rocblas_zsymm((rocblas_handle)handle, convert_side(SIDE), convert_uplo(UPLO), m, n, &alpha, A, lda, B, ldb, &beta, C, ldc);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+	
+}
+
+
+
+

@@ -230,5 +230,63 @@ void zsyrk(char UPLO, char transA, int n, int k, double_complex alpha, double_co
 	
 }
 
+//Xsyr2k
+
+
+
+void ssyr2k(char UPLO, char TransA, int n, int k, float alpha, float* A, int lda, float* B, int ldb, float beta, float* C, int ldc)
+{
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret = rocblas_ssyr2k((rocblas_handle)handle, convert_uplo(UPLO), rocblas_operation_none, n, k, &alpha, A, lda, B, ldb,  &beta, C, ldc);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+	
+}
+
+void dsyr2k(char UPLO, char TransA, int n, int k, double alpha, double* A, int lda, double* B, int ldb, double beta, double* C, int ldc)
+{
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret = rocblas_dsyr2k((rocblas_handle)handle, convert_uplo(UPLO), rocblas_operation_none, n, k, &alpha, A, lda, B, ldb,  &beta, C, ldc);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+	
+}
+void csyr2k(char UPLO, char TransA, int n, int k, float_complex alpha, float_complex* A, int lda, float_complex* B, int ldb, float_complex beta, float_complex* C, int ldc)
+{
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret = rocblas_csyr2k((rocblas_handle)handle, convert_uplo(UPLO), rocblas_operation_none, n, k, &alpha, A, lda, B, ldb,  &beta, C, ldc);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+	
+}
+void zsyr2k(char UPLO, char TransA, int n, int k, double_complex alpha, double_complex* A, int lda, double_complex* B, int ldb, double_complex beta, double_complex* C, int ldc)
+{
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret = rocblas_zsyr2k((rocblas_handle)handle, convert_uplo(UPLO), rocblas_operation_none, n, k, &alpha, A, lda, B, ldb,  &beta, C, ldc);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+	
+}
+
 
 

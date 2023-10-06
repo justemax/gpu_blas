@@ -188,3 +188,45 @@ void zsyrk(char UPLO, char transA, int n, int k, double_complex alpha, double_co
 }
 
 
+
+
+//Xsyr2k
+
+
+
+void ssyr2k(char UPLO, char TransA, int n, int k, float alpha, float* A, int lda, float* B, int ldb, float beta, float* C, int ldc)
+{
+
+	void* handle = (cublasHandle_t)init_cublas();
+
+	ret = cuZsyr2k(handle, convert_FILL(UPLO), convert_to_cublas_trans(transA), n, k, &alpha, A, lda, B, ldb, &beta, C, ldc);	
+		
+}
+
+
+void dsyr2k(char UPLO, char TransA, int n, int k, double alpha, double* A, int lda, double* B, int ldb, double beta, double* C, int ldc)
+{
+
+	void* handle = (cublasHandle_t)init_cublas();
+
+	ret = cuZsyr2k(handle, convert_FILL(UPLO), convert_to_cublas_trans(transA), n, k, &alpha, A, lda, B, ldb, &beta, C, ldc);	
+		
+}
+void csyr2k(char UPLO, char TransA, int n, int k, float_complex alpha, float_complex* A, int lda, float_complex* B, int ldb, float_complex beta, float_complex* C, int ldc)
+{
+
+	void* handle = (cublasHandle_t)init_cublas();
+
+	ret = cuZsyr2k(handle, convert_FILL(UPLO), convert_to_cublas_trans(transA), n, k, &alpha, A, lda, B, ldb, &beta, C, ldc);	
+		
+}
+void zsyr2k(char UPLO, char TransA, int n, int k, double_complex alpha, double_complex* A, int lda, double_complex* B, int ldb, double_complex beta, double_complex* C, int ldc)
+{
+
+	void* handle = (cublasHandle_t)init_cublas();
+
+	ret = cuZsyr2k(handle, convert_FILL(UPLO), convert_to_cublas_trans(transA), n, k, &alpha, A, lda, B, ldb, &beta, C, ldc);	
+		
+}
+
+

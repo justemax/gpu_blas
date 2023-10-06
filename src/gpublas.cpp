@@ -63,11 +63,6 @@ extern "C" int gpu_ssymm(char SIDE, char UPLO, int m, int n, float alpha, float*
 	return 0;
 }
 
-
-
-
-
-
 extern "C" int gpu_dsymm(char SIDE, char UPLO, int m, int n, double alpha, double* A, int lda, double* B, int ldb, double beta, double* C, int ldc)
 {
 	dsymm(SIDE, UPLO, m, n, alpha, A, lda, B, ldb, beta, C, ldc); 
@@ -87,6 +82,30 @@ extern "C" int gpu_zsymm(char SIDE, char UPLO, int m, int n, double_complex alph
 	return 0;
 }
 
+//Xsyrk
+extern "C" int gpu_syrk(char UPLO, char transA, int n, int k, float alpha, float* A, int lda, float beta, float* C, int ldc)
+{
+	ssyrk(UPLO, transA, n, k, alpha, A, lda, beta, C, ldc);
+	return 0;
+}
+
+extern "C" int gpu_dyrk(char UPLO, char transA, int n, int k, double alpha, double* A, int lda, double beta, double* C, int ldc)
+{
+	 
+	dsyrk(UPLO, transA, n, k, alpha, A, lda, beta, C, ldc);
+	return 0;
+}
+
+extern "C" int gpu_cyrk(char UPLO, char transA, int n, int k, float_complex alpha, float_complex* A, int lda, float_complex beta, float_complex* C, int ldc)
+{
+	csyrk(UPLO, transA, n, k, alpha, A, lda, beta, C, ldc);
+	return 0;
+}
+extern "C" int gpu_zyrk(char UPLO, char transA, int n, int k, double_complex alpha, double_complex* A, int lda, double_complex beta, double_complex* C, int ldc)
+{
+	zsyrk(UPLO, transA, n, k, alpha, A, lda, beta, C, ldc);
+	return 0;
+}
 
 
 

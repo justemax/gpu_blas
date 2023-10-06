@@ -173,3 +173,62 @@ void zsymm(char SIDE, char UPLO, int m, int n, double_complex alpha, double_comp
 
 
 
+//Xsyrk
+
+void ssyrk(char UPLO, char transA, int n, int k, float alpha, float* A, int lda, float beta, float* C, int ldc)
+{
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret = rocblas_ssyrk((rocblas_handle)handle, convert_uplo(UPLO), rocblas_operation_none, n, k, &alpha, A, lda,  &beta, C, ldc);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+	
+}
+void dsyrk(char UPLO, char transA, int n, int k, double alpha, double* A, int lda, double beta, double* C, int ldc)
+{
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret = rocblas_dsyrk((rocblas_handle)handle, convert_uplo(UPLO), rocblas_operation_none, n, k, &alpha, A, lda,  &beta, C, ldc);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+	
+}
+
+void csyrk(char UPLO, char transA, int n, int k, float_complex alpha, float_complex* A, int lda, float_complex beta, float_complex* C, int ldc)
+{
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret = rocblas_csyrk((rocblas_handle)handle, convert_uplo(UPLO), rocblas_operation_none, n, k, &alpha, A, lda,  &beta, C, ldc);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+	
+}
+
+void zsyrk(char UPLO, char transA, int n, int k, double_complex alpha, double_complex* A, int lda, double_complex beta, double_complex* C, int ldc)
+{
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret = rocblas_zsyrk((rocblas_handle)handle, convert_uplo(UPLO), rocblas_operation_none, n, k, &alpha, A, lda,  &beta, C, ldc);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+	
+}
+
+
+

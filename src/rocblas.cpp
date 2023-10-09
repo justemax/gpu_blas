@@ -357,3 +357,63 @@ void ztrmm(char SIDE, char UPLO, char TransA, char DIAG, int m, int n, double_co
 	
 }
 
+
+//Xtrsm
+
+
+void strsm(char SIDE, char UPLO, char TransA, char DIAG, int  m, int  n, float alpha, float* A, int lda, float* B, int ldb)
+{
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret = rocblas_strsm((rocblas_handle)handle, convert_side(SIDE), convert_uplo(UPLO), rocblas_operation_none, convert_diag(DIAG), m, n, &alpha, A, lda, B, ldb); 
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+	
+}
+
+void dtrsm(char SIDE, char UPLO, char TransA, char DIAG, int  m, int  n, double alpha, double* A, int lda, double* B, int ldb)
+{
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret = rocblas_dtrsm((rocblas_handle)handle, convert_side(SIDE), convert_uplo(UPLO), rocblas_operation_none, convert_diag(DIAG), m, n, &alpha, A, lda, B, ldb); 
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+	
+}
+void ctrsm(char SIDE, char UPLO, char TransA, char DIAG, int  m, int  n, float_complex alpha, float_complex* A, int lda, float_complex* B, int ldb)
+{
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret = rocblas_ctrsm((rocblas_handle)handle, convert_side(SIDE), convert_uplo(UPLO), rocblas_operation_none, convert_diag(DIAG), m, n, &alpha, A, lda, B, ldb); 
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+	
+}
+void ztrsm(char SIDE, char UPLO, char TransA, char DIAG, int  m, int  n, double_complex alpha, double_complex* A, int lda, double_complex* B, int ldb) 
+{
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret = rocblas_ztrsm((rocblas_handle)handle, convert_side(SIDE), convert_uplo(UPLO), rocblas_operation_none, convert_diag(DIAG), m, n, &alpha, A, lda, B, ldb); 
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+	
+}
+
+
+

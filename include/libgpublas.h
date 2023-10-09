@@ -77,6 +77,20 @@ extern "C" int gpu_ctrmm(char SIDE, char UPLO, char TransA, char DIAG, int m, in
 
 extern "C" int gpu_ztrmm(char SIDE, char UPLO, char TransA, char DIAG, int m, int n, double_complex alpha, double_complex* A, int lda, double_complex* B, int ldb);
 
+
+//Xtrsm
+
+
+extern "C" int gpu_strsm(char SIDE, char UPLO, char TransA, char DIAG, int  m, int  n, float alpha, float* A, int LDA, float* B, int ldb);
+
+extern "C" int gpu_dtrsm(char SIDE, char UPLO, char TransA, char DIAG, int  m, int  n, double alpha, double* A, int LDA, double* B, int ldb);
+
+extern "C" int gpu_ctrsm(char SIDE, char UPLO, char TransA, char DIAG, int  m, int  n, float_complex alpha, float_complex* A, int LDA, float_complex* B, int ldb);
+
+extern "C" int gpu_ztrsm(char SIDE, char UPLO, char TransA, char DIAG, int  m, int  n, double_complex alpha, double_complex* A, int LDA, double_complex* B, int ldb) ;
+
+
+
 #ifdef __cplusplus
 }
 #endif

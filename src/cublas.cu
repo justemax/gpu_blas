@@ -37,18 +37,30 @@ cublasOperation_t convert_to_cublas_trans(char trans)
 }
 
 
-cublasSideMode convert_side(char* SIDE)
+
+cublasDiagType_t convert_diag(char* DIAG)
 {
-	cublasSideMode ret;
+	cublasDiagType_t ret;
+	if(DIAG == 'N' || DIAG == 'n')
+		ret = CUBLAS_DIAG_NON_UNIT;
+	else if(DIAG == 'U' || DIAG == 'u')
+		ret = CUBLAS_DIAG_UNIT;
+
+	return ret;
+}
+
+cublasSideMode_t convert_side(char* SIDE)
+{
+	cublasSideMode_t ret;
 	if(SIDE == 'L' || side == 'l')
 		ret = CUBLAS_SIDE_LEFT;
 	else if(SIDE == 'r' || SIDE == 'R')
 		ret = CUBLAS_SIDE_RIGHT;
 	return ret
 }
-cublasFillMode convert_fill(char* UPLO)
+cublasFillMode_t convert_fill(char* UPLO)
 {
-	cublasFillMode ret;
+	cublasFillMode_t ret;
 	if(UPLO == 'U' || UPLO == 'u')
 		ret == CUBLAS_FILL_MODE_UPPER;
 	else if(UPLO == 'L' || UPLO == 'l')
@@ -229,4 +241,36 @@ void zsyr2k(char UPLO, char TransA, int n, int k, double_complex alpha, double_c
 		
 }
 
+//Xtrmm
+
+
+
+void strmm(char SIDE, char UPLO, char TransA, char DIAG, int m, int n, float alpha, float* A, int lda, float* B, int ldb);
+{
+
+	void* handle = (cublasHandle_t)init_cublas();
+
+	ret = cublasStrmm(handle, convert_side(SIDE), convert_fill(UPLO), convert_to_cublas_trans(TransA), convert_diag(DIAG), m, n, &alpha, A, lda, B, ldb);
+}
+void dtrmm(char SIDE, char UPLO, char TransA, char DIAG, int m, int n, double alpha, double* A, int lda, double* B, int ldb);
+{
+
+	void* handle = (cublasHandle_t)init_cublas();
+
+	ret = cublasDtrmm(handle, convert_side(SIDE), convert_fill(UPLO), convert_to_cublas_trans(TransA), convert_diag(DIAG), m, n, &alpha, A, lda, B, ldb);
+}
+void ctrmm(char SIDE, char UPLO, char TransA, char DIAG, int m, int n, float_complex alpha, float_complex* A, int lda, float_complex* B, int ldb);
+{
+
+	void* handle = (cublasHandle_t)init_cublas();
+
+	ret = cublasCtrmm(handle, convert_side(SIDE), convert_fill(UPLO), convert_to_cublas_trans(TransA), convert_diag(DIAG), m, n, &alpha, A, lda, B, ldb);
+}
+void ztrmm(char SIDE, char UPLO, char TransA, char DIAG, int m, int n, double_complex alpha, double_complex* A, int lda, double_complex* B, int ldb);
+{
+
+	void* handle = (cublasHandle_t)init_cublas();
+
+	ret = cublasZtrmm(handle, convert_side(SIDE), convert_fill(UPLO), convert_to_cublas_trans(TransA), convert_diag(DIAG), m, n, &alpha, A, lda, B, ldb);
+}
 

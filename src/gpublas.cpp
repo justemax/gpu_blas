@@ -137,6 +137,37 @@ extern "C" int gpu_zsyr2k(char UPLO, char TransA, int n, int k, double_complex a
 	return 0;
 }
 
+//Xtrmm
+
+extern "C" int gpu_strmm(char SIDE, char UPLO, char TransA, char DIAG, int m, int n, float alpha, float* A, int lda, float* B, int ldb)
+{
+	strmm(SIDE, UPLO, TransA, DIAG, m, n, alpha, A, lda, B, ldb);
+	return 0;
+}
+
+extern "C" int gpu_dtrmm(char SIDE, char UPLO, char TransA, char DIAG, int m, int n, double alpha, double* A, int lda, double* B, int ldb)
+{
+	dtrmm(SIDE, UPLO, TransA, DIAG, m, n, alpha, A, lda, B, ldb);
+	return 0;
+}
+
+
+extern "C" int gpu_ctrmm(char SIDE, char UPLO, char TransA, char DIAG, int m, int n, float_complex alpha, float_complex* A, int lda, float_complex* B, int ldb)
+{
+	ctrmm(SIDE, UPLO, TransA, DIAG, m, n, alpha, A, lda, B, ldb);
+	return 0;
+}
+
+
+extern "C" int gpu_ztrmm(char SIDE, char UPLO, char TransA, char DIAG, int m, int n, double_complex alpha, double_complex* A, int lda, double_complex* B, int ldb)
+{
+	ztrmm(SIDE, UPLO, TransA, DIAG, m, n, alpha, A, lda, B, ldb);
+	return 0;
+}
+
+
+
+
 
 
 

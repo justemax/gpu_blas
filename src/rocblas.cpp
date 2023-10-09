@@ -10,6 +10,15 @@ void* init_rocblas()
 }
 
 
+rocblas_diagonal convert_diag(char diag){
+	rocblas_diagonal ret;
+	if(diag == 'U' || diag == 'U')
+		ret = rocblas_diagonal_unit;
+	else if(diag == 'N' || diag == 'n')
+		ret = rocblas_diagonal_non_unit;
+
+	return ret;
+}
 
 rocblas_fill convert_uplo(char uplo)
 {
@@ -289,4 +298,62 @@ void zsyr2k(char UPLO, char TransA, int n, int k, double_complex alpha, double_c
 }
 
 
+//Xtrmm
+
+
+
+
+void strmm(char SIDE, char UPLO, char TransA, char DIAG, int m, int n, float alpha, float* A, int lda, float* B, int ldb)
+{
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret = rocblas_strmm((rocblas_handle)handle, convert_side(SIDE), convert_uplo(UPLO), rocblas_operation_none, convert_diag(DIAG), m, n, &alpha, A, lda, B, ldb); 
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+	
+}
+
+void dtrmm(char SIDE, char UPLO, char TransA, char DIAG, int m, int n, double alpha, double* A, int lda, double* B, int ldb)
+{
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret = rocblas_dtrmm((rocblas_handle)handle, convert_side(SIDE), convert_uplo(UPLO), rocblas_operation_none, convert_diag(DIAG), m, n, &alpha, A, lda, B, ldb); 
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+	
+}
+void ctrmm(char SIDE, char UPLO, char TransA, char DIAG, int m, int n, float_complex alpha, float_complex* A, int lda, float_complex* B, int ldb)
+{
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret = rocblas_ctrmm((rocblas_handle)handle, convert_side(SIDE), convert_uplo(UPLO), rocblas_operation_none, convert_diag(DIAG), m, n, &alpha, A, lda, B, ldb); 
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+	
+}
+void ztrmm(char SIDE, char UPLO, char TransA, char DIAG, int m, int n, double_complex alpha, double_complex* A, int lda, double_complex* B, int ldb)
+{
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret = rocblas_ztrmm((rocblas_handle)handle, convert_side(SIDE), convert_uplo(UPLO), rocblas_operation_none, convert_diag(DIAG), m, n, &alpha, A, lda, B, ldb); 
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+	
+}
 

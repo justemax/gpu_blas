@@ -17,6 +17,34 @@ typedef __half half ;
 #endif
 
 
+
+
+//XGEMV
+
+extern "C" int gpu_sgemv(char transA, int m, int n, float alpha, float* A, int lda, float* X, int incx, float beta, float* Y, int incy) 
+{
+	sgemv(transA, m, n, alpha, A, lda, X, incx, beta, Y, incy);
+	return 0;
+}
+
+
+extern "C" int gpu_dgemv(char transA, int m, int n, double alpha, double* A, int lda, double* X, int incx, double beta, double* Y, int incy) 
+{
+	dgemv(transA, m, n, alpha, A, lda, X, incx, beta, Y, incy);
+	return 0;
+}
+extern "C" int gpu_cgemv(char transA, int m, int n, float_complex alpha, float_complex* A, int lda, float_complex* X, int incx, float_complex beta, float_complex* Y, int incy)
+{
+	cgemv(transA, m, n, alpha, A, lda, X, incx, beta, Y, incy);
+	return 0;
+}
+extern "C" int gpu_zgemv(char transA, int m, int n, double_complex alpha, double_complex* A, int lda, double_complex* X, int incx, double_complex beta, double_complex* Y, int incy)
+{
+	zgemv(transA, m, n, alpha, A, lda, X, incx, beta, Y, incy);
+	return 0;
+}
+
+
 // Xgemm
 
 extern "C" int gpu_dgemm(char transA, char transB, int64_t m, int64_t n, int64_t k, double alpha, double* A, int64_t lda,\

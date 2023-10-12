@@ -19,6 +19,55 @@ typedef __half half ;
 extern "C"
 {
 #endif
+
+
+
+//XGEMV
+
+
+extern "C" int gpu_sgemv(char transA, int m, int n, float alpha, float* A, int lda, float* X, int incx, float beta, float* Y, int incy); 
+
+extern "C" int gpu_dgemv(char transA, int m, int n, double alpha, double* A, int lda, double* X, int incx, double beta, double* Y, int incy) ;
+
+extern "C" int gpu_cgemv(char transA, int m, int n, float_complex alpha, float_complex* A, int lda, float_complex* X, int incx, float_complex beta, float_complex* Y, int incy);
+
+extern "C" int gpu_zgemv(char transA, int m, int n, double_complex alpha, double_complex* A, int lda, double_complex* X, int incx, double_complex beta, double_complex* Y, int incy);
+
+//XGBMV
+
+
+//XSYMV
+
+
+//XSPMV
+
+//XTRMV
+
+
+
+//XTBMV
+
+//XTPMV
+
+//XTRSV
+
+
+
+
+
+//XTBSV
+
+//XGER
+
+//XSYR
+
+//XSPR
+
+//XSYR2
+
+
+//XSPR2
+
 //XGEMM
 int gpu_dgemm(char transA, char transB, int64_t m, int64_t n, int64_t k, double alpha, double* A, int64_t lda, double* B, int64_t ldb, double beta, double* C, int64_t ldc);
 

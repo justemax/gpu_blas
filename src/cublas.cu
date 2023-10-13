@@ -123,7 +123,7 @@ void sgbmv(char transA, int m, int n, int kl, int ku, float alpha, float* A, int
 
 	cublasHandle_t handle = (cublasHandle_t)init_cublas();
 	
-	cublasStatus_t error = cublasZgemv(handle, convert_to_cublas_trans(transA), m, n, kl, ku, &alpha, A, lda, X, incx, &beta, Y, incy);
+	cublasStatus_t error = cublasSgbmv(handle, convert_to_cublas_trans(transA), m, n, kl, ku, &alpha, A, lda, X, incx, &beta, Y, incy);
 
 
 }
@@ -133,7 +133,7 @@ void dgbmv(char transA, int m, int n, int kl, int ku, double alpha, double* A, i
 
 	cublasHandle_t handle = (cublasHandle_t)init_cublas();
 	
-	cublasStatus_t error = cublasZgemv(handle, convert_to_cublas_trans(transA), m, n, kl, ku, &alpha, A, lda, X, incx, &beta, Y, incy);
+	cublasStatus_t error = cublasDgbmv(handle, convert_to_cublas_trans(transA), m, n, kl, ku, &alpha, A, lda, X, incx, &beta, Y, incy);
 
 
 }
@@ -142,7 +142,7 @@ void cgbmv(char transA, int m, int n, int kl, int ku, float_complex alpha, float
 
 	cublasHandle_t handle = (cublasHandle_t)init_cublas();
 	
-	cublasStatus_t error = cublasZgemv(handle, convert_to_cublas_trans(transA), m, n, kl, ku, &alpha, A, lda, X, incx, &beta, Y, incy);
+	cublasStatus_t error = cublasCgbmv(handle, convert_to_cublas_trans(transA), m, n, kl, ku, &alpha, A, lda, X, incx, &beta, Y, incy);
 
 
 }
@@ -151,7 +151,7 @@ void zgbmv(char transA, int m, int n, int kl, int ku, double_complex alpha, doub
 
 	cublasHandle_t handle = (cublasHandle_t)init_cublas();
 	
-	cublasStatus_t error = cublasZgemv(handle, convert_to_cublas_trans(transA), m, n, kl, ku, &alpha, A, lda, X, incx, &beta, Y, incy);
+	cublasStatus_t error = cublasZgbmv(handle, convert_to_cublas_trans(transA), m, n, kl, ku, &alpha, A, lda, X, incx, &beta, Y, incy);
 
 
 }

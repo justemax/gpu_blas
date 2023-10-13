@@ -35,6 +35,14 @@ extern "C" int gpu_zgemv(char transA, int m, int n, double_complex alpha, double
 
 //XGBMV
 
+extern "C" int gpu_sgbmv(char transA, int m, int n, int kl, int ku, float alpha, float* A, int lda, float* X, int incx, float beta, float* Y, int incy); 
+
+extern "C" int gpu_dgbmv(char transA, int m, int n, int kl, int ku, double alpha, double* A, int lda, double* X, int incx, double beta, double* Y, int incy); 
+
+extern "C" int gpu_cgbmv(char transA, int m, int n, int kl, int ku, float_complex alpha, float_complex* A, int lda, float_complex* X, int incx, float_complex beta, float_complex* Y, int incy); 
+
+extern "C" int gpu_zgbmv(char transA, int m, int n, int kl, int ku, double_complex alpha, double_complex* A, int lda, double_complex* X, int incx, double_complex beta, double_complex* Y, int incy); 
+
 
 //XSYMV
 

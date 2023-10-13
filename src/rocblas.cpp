@@ -111,6 +111,70 @@ void zgemv(char transA, int m, int n, double_complex alpha, double_complex* A, i
 
 
 
+
+
+
+//XGBMV
+
+void sgbmv(char transA, int m, int n, int kl, int ku, float alpha, float* A, int lda, float* X, int incx, float beta, float* Y, int incy) 
+{
+
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret =rocblas_sgbmv((rocblas_handle)handle, rocblas_operation_none, m, n, kl, ku, &alpha, A, lda, X, incx, &beta, Y, incy);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+		
+}
+void dgbmv(char transA, int m, int n, int kl, int ku, double alpha, double* A, int lda, double* X, int incx, double beta, double* Y, int incy) 
+{
+
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret =rocblas_dgbmv((rocblas_handle)handle, rocblas_operation_none, m, n, kl, ku, &alpha, A, lda, X, incx, &beta, Y, incy);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+		
+}
+void cgbmv(char transA, int m, int n, int kl, int ku, float_complex alpha, float_complex* A, int lda, float_complex* X, int incx, float_complex beta, float_complex* Y, int incy) 
+{
+
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret =rocblas_cgbmv((rocblas_handle)handle, rocblas_operation_none, m, n, kl, ku, &alpha, A, lda, X, incx, &beta, Y, incy);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+		
+}
+void zgbmv(char transA, int m, int n, int kl, int ku, double_complex alpha, double_complex* A, int lda, double_complex* X, int incx, double_complex beta, double_complex* Y, int incy)
+{
+
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret =rocblas_zgbmv((rocblas_handle)handle, rocblas_operation_none, m, n, kl, ku, &alpha, A, lda, X, incx, &beta, Y, incy);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+		
+}
+
+
+
 //Xgemm
 
 void dgemm(char transA, char transB, int M, int N, int K, double ALPHA, double* A, int LDA, double* B, int LDB, double BETA, double* C, int LDC)

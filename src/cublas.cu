@@ -224,6 +224,54 @@ void dspmv(char UPLO, int n, double alpha, double* AP, double* X, int incx, doub
 
 
 
+
+
+
+
+//XTRMV
+
+void strmv(char UPLO, char transA, char DIAG, int n, float* A, int lda, float* X, int incx)
+{
+
+	cublasHandle_t handle = (cublasHandle_t)init_cublas();
+	
+	cublasStatus_t error = cublasStrmv(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), convert_diag(DIAG), n, A, lda, X, incx);
+
+
+}
+void dtrmv(char UPLO, char transA, char DIAG, int n, double* A, int lda, double* X, int incx)
+{
+
+	cublasHandle_t handle = (cublasHandle_t)init_cublas();
+	
+	cublasStatus_t error = cublasDtrmv(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), convert_diag(DIAG), n, A, lda, X, incx);
+
+
+}
+void ctrmv(char UPLO, char transA, char DIAG, int n, float_complex* A, int lda, float_complex* X, int incx)
+{
+
+	cublasHandle_t handle = (cublasHandle_t)init_cublas();
+	
+	cublasStatus_t error = cublasCtrmv(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), convert_diag(DIAG), n, A, lda, X, incx);
+
+
+}
+void ztrmv(char UPLO, char transA, char DIAG, int n, double_complex* A, int lda, double_complex* X, int incx)
+{
+
+	cublasHandle_t handle = (cublasHandle_t)init_cublas();
+	
+	cublasStatus_t error = cublasZtrmv(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), convert_diag(DIAG), n, A, lda, X, incx);
+
+
+}
+
+
+
+
+
+
 /******
   BLAS 3
   *****/

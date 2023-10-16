@@ -57,6 +57,25 @@ void zsymv(char UPLO, int n, double_complex alpha, double_complex* A, int lda, d
 void sspmv(char UPLO, int n, float alpha, float* AP, float* X, int incx, float beta, float* Y, int inc); 
 
 void dspmv(char UPLO, int n, double alpha, double* AP, double* X, int incx, double beta, double* Y, int inc); 
+
+
+//XTRMV
+
+void strmv(char UPLO, char transA, char DIAG, int n, float* A, int lda, float* X, int incx);
+
+void dtrmv(char UPLO, char transA, char DIAG, int n, double* A, int lda, double* X, int incx);
+
+void ctrmv(char UPLO, char transA, char DIAG, int n, float_complex* A, int lda, float_complex* X, int incx);
+
+void ztrmv(char UPLO, char transA, char DIAG, int n, double_complex* A, int lda, double_complex* X, int incx);
+
+
+
+
+
+
+
+
 /*******
  * BLAS 3
  *

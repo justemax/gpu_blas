@@ -46,6 +46,13 @@ int gpu_zgbmv(char transA, int m, int n, int kl, int ku, double_complex alpha, d
 
 //XSYMV
 
+int gpu_ssymv(char UPLO, int n, float alpha, float* A, int lda, float* X, int incx, float beta, float* Y, int incy);
+
+int gpu_dsymv(char UPLO, int n, double alpha, double* A, int lda, double* X, int incx, double beta, double* Y, int incy);
+
+int gpu_csymv(char UPLO, int n, float_complex alpha, float_complex* A, int lda, float_complex* X, int incx, float_complex beta, float_complex* Y, int incy);
+
+int gpu_zsymv(char UPLO, int n, double_complex alpha, double_complex* A, int lda, double_complex* X, int incx, double_complex beta, double_complex* Y, int incy);
 
 //XSPMV
 

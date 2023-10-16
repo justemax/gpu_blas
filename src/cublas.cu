@@ -159,6 +159,53 @@ void zgbmv(char transA, int m, int n, int kl, int ku, double_complex alpha, doub
 
 
 
+//XSYMV
+
+void ssymv(char UPLO, int n, float alpha, float* A, int lda, float* X, int incx, float beta, float* Y, int incy)
+{
+
+	cublasHandle_t handle = (cublasHandle_t)init_cublas();
+	
+	cublasStatus_t error = cublasSsymv(handle, convert_fill(UPLO), n, &alpha, A, lda, X, incx, &beta, Y, incy);
+
+
+}
+void dsymv(char UPLO, int n, double alpha, double* A, int lda, double* X, int incx, double beta, double* Y, int incy)
+{
+
+	cublasHandle_t handle = (cublasHandle_t)init_cublas();
+	
+	cublasStatus_t error = cublasDsymv(handle, convert_fill(UPLO), n, &alpha, A, lda, X, incx, &beta, Y, incy);
+
+
+}
+
+void csymv(char UPLO, int n, float_complex alpha, float_complex* A, int lda, float_complex* X, int incx, float_complex beta, float_complex* Y, int incy)
+{
+
+	cublasHandle_t handle = (cublasHandle_t)init_cublas();
+	
+	cublasStatus_t error = cublasCsymv(handle, convert_fill(UPLO), n, &alpha, A, lda, X, incx, &beta, Y, incy);
+
+
+}
+void zsymv(char UPLO, int n, double_complex alpha, double_complex* A, int lda, double_complex* X, int incx, double_complex beta, double_complex* Y, int incy)
+{
+
+	cublasHandle_t handle = (cublasHandle_t)init_cublas();
+	
+	cublasStatus_t error = cublasZsymv(handle, convert_fill(UPLO), n, &alpha, A, lda, X, incx, &beta, Y, incy);
+
+
+}
+
+
+
+
+/******
+  BLAS 3
+  *****/
+
 
 //Xgemm
 

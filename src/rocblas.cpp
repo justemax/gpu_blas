@@ -233,6 +233,36 @@ void zsymv(char UPLO, int n, double_complex alpha, double_complex* A, int lda, d
 }
 
 
+//XSPMV
+
+void sspmv(char UPLO, int n, float alpha, float* AP, float* X, int incx, float beta, float* Y, int inc)
+{
+
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret =rocblas_sspmv((rocblas_handle)handle, convert_uplo(UPLO), n,  &alpha, AP, X, incx, &beta, Y, inc);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+		
+}
+void dspmv(char UPLO, int n, double alpha, double* AP, double* X, int incx, double beta, double* Y, int inc) 
+{
+
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret =rocblas_dspmv((rocblas_handle)handle, convert_uplo(UPLO), n,  &alpha, AP, X, incx, &beta, Y, inc);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+		
+}
 /********
  * 
  * BLAS 3

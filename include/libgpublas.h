@@ -56,6 +56,9 @@ int gpu_zsymv(char UPLO, int n, double_complex alpha, double_complex* A, int lda
 
 //XSPMV
 
+int gpu_sspmv(char UPLO, int n, float alpha, float* AP, float* X, int incx, float beta, float* Y, int inc); 
+
+int gpu_dspmv(char UPLO, int n, double alpha, double* AP, double* X, int incx, double beta, double* Y, int inc); 
 //XTRMV
 
 

@@ -52,7 +52,11 @@ void csymv(char UPLO, int n, float_complex alpha, float_complex* A, int lda, flo
 void zsymv(char UPLO, int n, double_complex alpha, double_complex* A, int lda, double_complex* X, int incx, double_complex beta, double_complex* Y, int incy);
 
 
+//XSPMV
 
+void sspmv(char UPLO, int n, float alpha, float* AP, float* X, int incx, float beta, float* Y, int inc); 
+
+void dspmv(char UPLO, int n, double alpha, double* AP, double* X, int incx, double beta, double* Y, int inc); 
 /*******
  * BLAS 3
  *

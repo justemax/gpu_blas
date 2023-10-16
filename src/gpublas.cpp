@@ -140,6 +140,29 @@ int gpu_ztrmv(char UPLO, char transA, char DIAG, int n, double_complex* A, int l
 	return 0;
 }
 
+//XTBMV
+
+int gpu_stbmv(char UPLO, char TransA, char DIAG, int n, int k, float* A, int lda, float* X, int incx)
+{
+	stbmv(UPLO, TransA, DIAG, n, k, A, lda, X, incx);
+	return 0;
+}
+
+int gpu_dtbmv(char UPLO, char TransA, char DIAG, int n, int k, double* A, int lda, double* X, int incx)
+{
+	dtbmv(UPLO, TransA, DIAG, n, k, A, lda, X, incx);
+	return 0;
+}
+int gpu_ctbmv(char UPLO, char TransA, char DIAG, int n, int k, float_complex* A, int lda, float_complex* X, int incx)
+{
+	ctbmv(UPLO, TransA, DIAG, n, k, A, lda, X, incx);
+	return 0;
+}
+int gpu_ztbmv(char UPLO, char TransA, char DIAG, int n, int k, double_complex* A, int lda, double_complex* X, int incx)
+{
+	ztbmv(UPLO, TransA, DIAG, n, k, A, lda, X, incx);
+	return 0;
+}
 
 
 

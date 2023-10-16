@@ -72,6 +72,17 @@ void ztrmv(char UPLO, char transA, char DIAG, int n, double_complex* A, int lda,
 
 
 
+//XTBMV
+
+void stbmv(char UPLO, char TransA, char DIAG, int n, int k, float* A, int lda, float* X, int incx);
+
+void dtbmv(char UPLO, char TransA, char DIAG, int n, int k, double* A, int lda, double* X, int incx);
+
+void ctbmv(char UPLO, char TransA, char DIAG, int n, int k, float_complex* A, int lda, float_complex* X, int incx);
+
+void ztbmv(char UPLO, char TransA, char DIAG, int n, int k, double_complex* A, int lda, double_complex* X, int incx);
+
+
 
 
 

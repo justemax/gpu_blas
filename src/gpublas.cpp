@@ -257,16 +257,32 @@ int gpu_dger(int m, int n, double alpha, double* X, int incx, double* Y, int inc
 	dger(m, n, alpha, X, incx, Y, incy, A, lda);
 	return 0;
 }
-int gpu_cger(int m, int n, float_complex alpha, float_complex* X, int incx, float_complex* Y, int incy, float_complex* A, int lda)
-{
-	cger(m, n, alpha, X, incx, Y, incy, A, lda);
+
+
+//XSYR
+
+int gpu_ssyr(char UPLO, int n, float alpha, float* X, int incx, float* A, int lda)
+{	
+	ssyr(UPLO, n, alpha, X, incx, A, lda);
 	return 0;
 }
-int gpu_zger(int m, int n, double_complex alpha, double_complex* X, int incx, double_complex* Y, int incy, double_complex* A, int lda)
-{
-	zger(m, n, alpha, X, incx, Y, incy, A, lda);
+int gpu_dsyr(char UPLO, int n, double alpha, double* X, int incx, double* A, int lda)
+{	
+	dsyr(UPLO, n, alpha, X, incx, A, lda);
 	return 0;
 }
+int gpu_csyr(char UPLO, int n, float_complex alpha, float_complex* X, int incx, float_complex* A, int lda)
+{	
+	csyr(UPLO, n, alpha, X, incx, A, lda);
+	return 0;
+}
+int gpu_zsyr(char UPLO, int n, double_complex alpha, double_complex* X, int incx, double_complex* A, int lda)
+{	
+	zsyr(UPLO, n, alpha, X, incx, A, lda);
+	return 0;
+}
+
+
 
 
 /*****

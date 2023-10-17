@@ -445,7 +445,7 @@ void sger(int m, int n, float alpha, float* X, int incx, float* Y, int incy, flo
 
 	cublasHandle_t handle = (cublasHandle_t)init_cublas();
 	
-	cublasStatus_t error = cublasSger(handle, m, n, apha, X, incx, Y, incy, A, lda);
+	cublasStatus_t error = cublasSger(handle, m, n, &apha, X, incx, Y, incy, A, lda);
 
 
 }
@@ -454,25 +454,43 @@ void dger(int m, int n, double alpha, double* X, int incx, double* Y, int incy, 
 
 	cublasHandle_t handle = (cublasHandle_t)init_cublas();
 	
-	cublasStatus_t error = cublasDger(handle, m, n, apha, X, incx, Y, incy, A, lda);
+	cublasStatus_t error = cublasDger(handle, m, n, &apha, X, incx, Y, incy, A, lda);
 
 
 }
-void cger(int m, int n, float_complex alpha, float_complex* X, int incx, float_complex* Y, int incy, float_complex* A, int lda)
-{
 
+//XSYR
+
+void ssyr(char UPLO, int n, float alpha, float* X, int incx, float* A, int lda);
+{
 	cublasHandle_t handle = (cublasHandle_t)init_cublas();
 	
-	cublasStatus_t error = cublasCger(handle, m, n, apha, X, incx, Y, incy, A, lda);
+	cublasStatus_t error = cublasSsyr(handle, convert_fill(UPLO), n, &alpha, X, incx, A, lda);
 
 
 }
-void zger(int m, int n, double_complex alpha, double_complex* X, int incx, double_complex* Y, int incy, double_complex* A, int lda)
-{
 
+void dsyr(char UPLO, int n, double alpha, double* X, int incx, double* A, int lda);
+{
 	cublasHandle_t handle = (cublasHandle_t)init_cublas();
 	
-	cublasStatus_t error = cublasZger(handle, m, n, apha, X, incx, Y, incy, A, lda);
+	cublasStatus_t error = cublasDsyr(handle, convert_fill(UPLO), n, &alpha, X, incx, A, lda);
+
+
+}
+void csyr(char UPLO, int n, float_complex alpha, float_complex* X, int incx, float_complex* A, int lda);
+{
+	cublasHandle_t handle = (cublasHandle_t)init_cublas();
+	
+	cublasStatus_t error = cublasCsyr(handle, convert_fill(UPLO), n, &alpha, X, incx, A, lda);
+
+
+}
+void zsyr(char UPLO, int n, double_complex alpha, double_complex* X, int incx, double_complex* A, int lda);
+{
+	cublasHandle_t handle = (cublasHandle_t)init_cublas();
+	
+	cublasStatus_t error = cublasZsyr(handle, convert_fill(UPLO), n, &alpha, X, incx, A, lda);
 
 
 }
@@ -550,7 +568,7 @@ void ssymm(char SIDE, char UPLO, int m, int n, float alpha, float* A, int lda, f
 
 	void* handle = (cublasHandle_t)init_cublas();
 
-	ret = cuSsymm(handle, convert_side(SIDE), convert_FILL(UPLO), m, n, &alpha, A, lda, B, ldb, &beta, C, ldc);	
+	ret = cuSsymm(handle, convert_side(SIDE), convert_fill(UPLO), m, n, &alpha, A, lda, B, ldb, &beta, C, ldc);	
 		
 }
 void dsymm(char SIDE, char UPLO, int m, int n, double alpha, double* A, int lda, double* B, int ldb, double beta, double* C, int ldc)
@@ -558,7 +576,7 @@ void dsymm(char SIDE, char UPLO, int m, int n, double alpha, double* A, int lda,
 
 	void* handle = (cublasHandle_t)init_cublas();
 
-	ret = cuDsymm(handle, convert_side(SIDE), convert_FILL(UPLO), m, n, &alpha, A, lda, B, ldb, &beta, C, ldc);	
+	ret = cuDsymm(handle, convert_side(SIDE), convert_fill(UPLO), m, n, &alpha, A, lda, B, ldb, &beta, C, ldc);	
 		
 }
 void csymm(char SIDE, char UPLO, int m, int n, float_complex alpha, float_complex* A, int lda, float_complex* B, int ldb, float_complex beta, float_complex* C, int ldc)
@@ -566,7 +584,7 @@ void csymm(char SIDE, char UPLO, int m, int n, float_complex alpha, float_comple
 
 	void* handle = (cublasHandle_t)init_cublas();
 
-	ret = cuCsymm(handle, convert_side(SIDE), convert_FILL(UPLO), m, n, &alpha, A, lda, B, ldb, &beta, C, ldc);	
+	ret = cuCsymm(handle, convert_side(SIDE), convert_fill(UPLO), m, n, &alpha, A, lda, B, ldb, &beta, C, ldc);	
 		
 }
 void zsymm(char SIDE, char UPLO, int m, int n, double_complex alpha, double_complex* A, int lda, double_complex* B, int ldb, double_complex beta, double_complex* C, int ldc)
@@ -574,7 +592,7 @@ void zsymm(char SIDE, char UPLO, int m, int n, double_complex alpha, double_comp
 
 	void* handle = (cublasHandle_t)init_cublas();
 
-	ret = cuZsymm(handle, convert_side(SIDE), convert_FILL(UPLO), m, n, &alpha, A, lda, B, ldb, &beta, C, ldc);	
+	ret = cuZsymm(handle, convert_side(SIDE), convert_fill(UPLO), m, n, &alpha, A, lda, B, ldb, &beta, C, ldc);	
 		
 }
 
@@ -587,7 +605,7 @@ void ssyrk(char UPLO, char transA, int n, int k, float alpha, float* A, int lda,
 
 	void* handle = (cublasHandle_t)init_cublas();
 
-	ret = cuZsymm(handle, convert_FILL(UPLO), convert_to_cublas_trans(transA), n, k, &alpha, A, lda,&beta, C, ldc);	
+	ret = cuZsymm(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), n, k, &alpha, A, lda,&beta, C, ldc);	
 		
 }
 
@@ -597,7 +615,7 @@ void dsyrk(char UPLO, char transA, int n, int k, double alpha, double* A, int ld
 
 	void* handle = (cublasHandle_t)init_cublas();
 
-	ret = cuZsymm(handle, convert_FILL(UPLO), convert_to_cublas_trans(transA), n, k, &alpha, A, lda,&beta, C, ldc);	
+	ret = cuZsymm(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), n, k, &alpha, A, lda,&beta, C, ldc);	
 		
 }
 void csyrk(char UPLO, char transA, int n, int k, float_complex alpha, float_complex* A, int lda, float_complex beta, float_complex* C, int ldc)
@@ -605,7 +623,7 @@ void csyrk(char UPLO, char transA, int n, int k, float_complex alpha, float_comp
 
 	void* handle = (cublasHandle_t)init_cublas();
 
-	ret = cuZsymm(handle, convert_FILL(UPLO), convert_to_cublas_trans(transA), n, k, &alpha, A, lda,&beta, C, ldc);	
+	ret = cuZsymm(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), n, k, &alpha, A, lda,&beta, C, ldc);	
 		
 }
 void zsyrk(char UPLO, char transA, int n, int k, double_complex alpha, double_complex* A, int lda, double_complex beta, double_complex* C, int ldc)
@@ -613,7 +631,7 @@ void zsyrk(char UPLO, char transA, int n, int k, double_complex alpha, double_co
 
 	void* handle = (cublasHandle_t)init_cublas();
 
-	ret = cuZsymm(handle, convert_FILL(UPLO), convert_to_cublas_trans(transA), n, k, &alpha, A, lda,&beta, C, ldc);	
+	ret = cuZsymm(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), n, k, &alpha, A, lda,&beta, C, ldc);	
 		
 }
 
@@ -629,7 +647,7 @@ void ssyr2k(char UPLO, char TransA, int n, int k, float alpha, float* A, int lda
 
 	void* handle = (cublasHandle_t)init_cublas();
 
-	ret = cuZsyr2k(handle, convert_FILL(UPLO), convert_to_cublas_trans(transA), n, k, &alpha, A, lda, B, ldb, &beta, C, ldc);	
+	ret = cuZsyr2k(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), n, k, &alpha, A, lda, B, ldb, &beta, C, ldc);	
 		
 }
 
@@ -639,7 +657,7 @@ void dsyr2k(char UPLO, char TransA, int n, int k, double alpha, double* A, int l
 
 	void* handle = (cublasHandle_t)init_cublas();
 
-	ret = cuZsyr2k(handle, convert_FILL(UPLO), convert_to_cublas_trans(transA), n, k, &alpha, A, lda, B, ldb, &beta, C, ldc);	
+	ret = cuZsyr2k(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), n, k, &alpha, A, lda, B, ldb, &beta, C, ldc);	
 		
 }
 void csyr2k(char UPLO, char TransA, int n, int k, float_complex alpha, float_complex* A, int lda, float_complex* B, int ldb, float_complex beta, float_complex* C, int ldc)
@@ -647,7 +665,7 @@ void csyr2k(char UPLO, char TransA, int n, int k, float_complex alpha, float_com
 
 	void* handle = (cublasHandle_t)init_cublas();
 
-	ret = cuZsyr2k(handle, convert_FILL(UPLO), convert_to_cublas_trans(transA), n, k, &alpha, A, lda, B, ldb, &beta, C, ldc);	
+	ret = cuZsyr2k(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), n, k, &alpha, A, lda, B, ldb, &beta, C, ldc);	
 		
 }
 void zsyr2k(char UPLO, char TransA, int n, int k, double_complex alpha, double_complex* A, int lda, double_complex* B, int ldb, double_complex beta, double_complex* C, int ldc)
@@ -655,7 +673,7 @@ void zsyr2k(char UPLO, char TransA, int n, int k, double_complex alpha, double_c
 
 	void* handle = (cublasHandle_t)init_cublas();
 
-	ret = cuZsyr2k(handle, convert_FILL(UPLO), convert_to_cublas_trans(transA), n, k, &alpha, A, lda, B, ldb, &beta, C, ldc);	
+	ret = cuZsyr2k(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), n, k, &alpha, A, lda, B, ldb, &beta, C, ldc);	
 		
 }
 

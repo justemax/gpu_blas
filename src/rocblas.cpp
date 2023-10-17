@@ -589,7 +589,7 @@ void sger(int m, int n, float alpha, float* X, int incx, float* Y, int incy, flo
 	void* handle = (rocblas_handle)init_rocblas();
 	rocblas_status ret ;
 
-	ret =rocblas_sger((rocblas_handle)handle, m, n, alpha, X, incx, Y, incy, A, lda);	
+	ret =rocblas_sger((rocblas_handle)handle, m, n, &alpha, X, incx, Y, incy, A, lda);	
 
 	if(ret != rocblas_status_success)
 	{
@@ -603,7 +603,7 @@ void dger(int m, int n, double alpha, double* X, int incx, double* Y, int incy, 
 	void* handle = (rocblas_handle)init_rocblas();
 	rocblas_status ret ;
 
-	ret =rocblas_dger((rocblas_handle)handle, m, n, alpha, X, incx, Y, incy, A, lda);	
+	ret =rocblas_dger((rocblas_handle)handle, m, n, &alpha, X, incx, Y, incy, A, lda);	
 
 	if(ret != rocblas_status_success)
 	{
@@ -611,13 +611,18 @@ void dger(int m, int n, double alpha, double* X, int incx, double* Y, int incy, 
 	}
 		
 }
-void cger(int m, int n, float_complex alpha, float_complex* X, int incx, float_complex* Y, int incy, float_complex* A, int lda)
+
+
+
+//XSYR
+
+void ssyr(char UPLO, int n, float alpha, float* X, int incx, float* A, int lda)
 {
 
 	void* handle = (rocblas_handle)init_rocblas();
 	rocblas_status ret ;
 
-	ret =rocblas_cger((rocblas_handle)handle, m, n, alpha, X, incx, Y, incy, A, lda);	
+	ret =rocblas_ssyr((rocblas_handle)handle, convert_uplo(UPLO), n, &alpha, X, incx, A, lda);	
 
 	if(ret != rocblas_status_success)
 	{
@@ -625,13 +630,13 @@ void cger(int m, int n, float_complex alpha, float_complex* X, int incx, float_c
 	}
 		
 }
-void zger(int m, int n, double_complex alpha, double_complex* X, int incx, double_complex* Y, int incy, double_complex* A, int lda)
+void dsyr(char UPLO, int n, double alpha, double* X, int incx, double* A, int lda)
 {
 
 	void* handle = (rocblas_handle)init_rocblas();
 	rocblas_status ret ;
 
-	ret =rocblas_zger((rocblas_handle)handle, m, n, alpha, X, incx, Y, incy, A, lda);	
+	ret =rocblas_dsyr((rocblas_handle)handle, convert_uplo(UPLO), n, &alpha, X, incx, A, lda);	
 
 	if(ret != rocblas_status_success)
 	{
@@ -639,7 +644,34 @@ void zger(int m, int n, double_complex alpha, double_complex* X, int incx, doubl
 	}
 		
 }
+void csyr(char UPLO, int n, float_complex alpha, float_complex* X, int incx, float_complex* A, int lda)
+{
 
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret =rocblas_csyr((rocblas_handle)handle, convert_uplo(UPLO), n, &alpha, X, incx, A, lda);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+		
+}
+void zsyr(char UPLO, int n, double_complex alpha, double_complex* X, int incx, double_complex* A, int lda)
+{
+
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret =rocblas_zsyr((rocblas_handle)handle, convert_uplo(UPLO), n, &alpha, X, incx, A, lda);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+		
+}
 
 
 

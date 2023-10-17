@@ -130,6 +130,14 @@ int gpu_zger(int m, int n, double_complex alpha, double_complex* X, int incx, do
 
 //XSYR
 
+int gpu_ssyr(char UPLO, int n, float alpha, float* X, int incx, float* A, int lda);
+
+int gpu_dsyr(char UPLO, int n, double alpha, double* X, int incx, double* A, int lda);
+
+int gpu_csyr(char UPLO, int n, float_complex alpha, float_complex* X, int incx, float_complex* A, int lda);
+
+int gpu_zsyr(char UPLO, int n, double_complex alpha, double_complex* X, int incx, double_complex* A, int lda);
+
 //XSPR
 
 //XSYR2

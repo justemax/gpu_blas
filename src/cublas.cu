@@ -288,7 +288,7 @@ void dtbmv(char UPLO, char TransA, char DIAG, int n, int k, double* A, int lda, 
 
 	cublasHandle_t handle = (cublasHandle_t)init_cublas();
 	
-	cublasStatus_t error = cublasStbmv(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), convert_diag(DIAG), n, k, A, lda, X, incx);
+	cublasStatus_t error = cublasDtbmv(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), convert_diag(DIAG), n, k, A, lda, X, incx);
 
 
 }
@@ -297,7 +297,7 @@ void ctbmv(char UPLO, char TransA, char DIAG, int n, int k, float_complex* A, in
 
 	cublasHandle_t handle = (cublasHandle_t)init_cublas();
 	
-	cublasStatus_t error = cublasStbmv(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), convert_diag(DIAG), n, k, A, lda, X, incx);
+	cublasStatus_t error = cublasCtbmv(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), convert_diag(DIAG), n, k, A, lda, X, incx);
 
 
 }
@@ -306,12 +306,52 @@ void ztbmv(char UPLO, char TransA, char DIAG, int n, int k, double_complex* A, i
 
 	cublasHandle_t handle = (cublasHandle_t)init_cublas();
 	
-	cublasStatus_t error = cublasStbmv(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), convert_diag(DIAG), n, k, A, lda, X, incx);
+	cublasStatus_t error = cublasZtbmv(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), convert_diag(DIAG), n, k, A, lda, X, incx);
 
 
 }
 
 
+
+
+//XTPMV
+
+void stpmv(char UPLO, char transA, char DIAG, int n, float* AP, float* X, int incx)
+{
+
+	cublasHandle_t handle = (cublasHandle_t)init_cublas();
+	
+	cublasStatus_t error = cublasStpmv(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), convert_diag(DIAG), n, AP, lda, X, incx);
+
+
+}
+void dtpmv(char UPLO, char transA, char DIAG, int n, double* AP, double* X, int incx)
+{
+
+	cublasHandle_t handle = (cublasHandle_t)init_cublas();
+	
+	cublasStatus_t error = cublasDtpmv(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), convert_diag(DIAG), n, AP, lda, X, incx);
+
+
+}
+void ctpmv(char UPLO, char transA, char DIAG, int n, float_complex* AP, float_complex* X, int incx)
+{
+
+	cublasHandle_t handle = (cublasHandle_t)init_cublas();
+	
+	cublasStatus_t error = cublasCtpmv(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), convert_diag(DIAG), n, AP, lda, X, incx);
+
+
+}
+void ztpmv(char UPLO, char transA, char DIAG, int n, double_complex* AP, double_complex* X, int incx)
+{
+
+	cublasHandle_t handle = (cublasHandle_t)init_cublas();
+	
+	cublasStatus_t error = cublasZtpmv(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), convert_diag(DIAG), n, AP, lda, X, incx);
+
+
+}
 
 
 

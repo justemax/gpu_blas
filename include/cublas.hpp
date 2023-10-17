@@ -81,6 +81,18 @@ void ztbmv(char UPLO, char TransA, char DIAG, int n, int k, double_complex* A, i
 
 
 
+//XTPMV
+
+void stpmv(char UPLO, char transA, char DIAG, int n, float* AP, float* X, int incx);
+
+void dtpmv(char UPLO, char transA, char DIAG, int n, double* AP, double* X, int incx);
+
+void dtpmv(char UPLO, char transA, char DIAG, int n, float_complex* AP, float_complex* X, int incx);
+
+void ztpmv(char UPLO, char transA, char DIAG, int n, double_complex* AP, double_complex* X, int incx);
+
+
+
 
 /*
  * BLAS 3

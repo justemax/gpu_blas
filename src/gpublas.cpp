@@ -167,6 +167,35 @@ int gpu_ztbmv(char UPLO, char TransA, char DIAG, int n, int k, double_complex* A
 
 
 
+
+//XTPMV
+
+int gpu_stpmv(char UPLO, char transA, char DIAG, int n, float* AP, float* X, int incx)
+{
+	stpmv(UPLO, transA, DIAG, n, AP, X, incx);
+	return 0;
+}
+
+int gpu_dtpmv(char UPLO, char transA, char DIAG, int n, double* AP, double* X, int incx)
+{
+	dtpmv(UPLO, transA, DIAG, n, AP, X, incx);
+	return 0;
+}
+int gpu_ctpmv(char UPLO, char transA, char DIAG, int n, float_complex* AP, float_complex* X, int incx)
+{
+	ctpmv(UPLO, transA, DIAG, n, AP, X, incx);
+	return 0;
+}
+int gpu_ztpmv(char UPLO, char transA, char DIAG, int n, double_complex* AP, double_complex* X, int incx)
+{
+	ztpmv(UPLO, transA, DIAG, n, AP, X, incx);
+	return 0;
+}
+
+
+
+
+
 /*****
  * BLAS 3
  * ****/

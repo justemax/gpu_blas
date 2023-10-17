@@ -135,6 +135,18 @@ void zsyr(char UPLO, int n, double_complex alpha, double_complex* X, int incx, d
 
 
 
+//XSPR
+
+void sspr(char UPLO, int n, float alpha, float* X, int incx, float* AP);
+
+void dspr(char UPLO, int n, double alpha, double* X, int incx, double* AP);
+
+void cspr(char UPLO, int n, float_complex alpha, float_complex* X, int incx, float_complex* AP);
+
+void zspr(char UPLO, int n, double_complex alpha, double_complex* X, int incx, double_complex* AP);
+
+
+
 
 
 

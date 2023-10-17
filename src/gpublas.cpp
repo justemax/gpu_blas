@@ -283,6 +283,30 @@ int gpu_zsyr(char UPLO, int n, double_complex alpha, double_complex* X, int incx
 }
 
 
+//XSPR
+
+int gpu_sspr(char UPLO, int n, float alpha, float* X, int incx, float* AP)
+{
+	sspr(UPLO, n, alpha, X, incx, AP);	
+	return 0;
+}
+
+int gpu_dspr(char UPLO, int n, double alpha, double* X, int incx, double* AP)
+{
+	dspr(UPLO, n, alpha, X, incx, AP);	
+	return 0;
+}
+int gpu_cspr(char UPLO, int n, float_complex alpha, float_complex* X, int incx, float_complex* AP)
+{
+	cspr(UPLO, n, alpha, X, incx, AP);	
+	return 0;
+}
+int gpu_zspr(char UPLO, int n, double_complex alpha, double_complex* X, int incx, double_complex* AP)
+{
+	zspr(UPLO, n, alpha, X, incx, AP);	
+	return 0;
+}
+
 
 
 /*****

@@ -675,6 +675,73 @@ void zsyr(char UPLO, int n, double_complex alpha, double_complex* X, int incx, d
 
 
 
+
+
+//XSPR
+
+void sspr(char UPLO, int n, float alpha, float* X, int incx, float* AP)
+{
+
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret =rocblas_sspr((rocblas_handle)handle, convert_uplo(UPLO), n, &alpha, X, incx, AP);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+		
+}
+void dspr(char UPLO, int n, double alpha, double* X, int incx, double* AP)
+{
+
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret =rocblas_dspr((rocblas_handle)handle, convert_uplo(UPLO), n, &alpha, X, incx, AP);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+		
+}
+
+void cspr(char UPLO, int n, float_complex alpha, float_complex* X, int incx, float_complex* AP)
+{
+
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret =rocblas_cspr((rocblas_handle)handle, convert_uplo(UPLO), n, &alpha, X, incx, AP);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+		
+}
+
+void zspr(char UPLO, int n, double_complex alpha, double_complex* X, int incx, double_complex* AP)
+{
+
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret =rocblas_zspr((rocblas_handle)handle, convert_uplo(UPLO), n, &alpha, X, incx, AP);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+		
+}
+
+
+
+
+
 /********
  * 
  * BLAS 3

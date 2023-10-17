@@ -496,6 +496,42 @@ void zsyr(char UPLO, int n, double_complex alpha, double_complex* X, int incx, d
 }
 
 
+//XSPR
+
+void sspr(char UPLO, int n, float alpha, float* X, int incx, float* AP)
+{
+	cublasHandle_t handle = (cublasHandle_t)init_cublas();
+	
+	cublasStatus_t error = cublasSspr(handle, convert_fill(UPLO), n, &alpha, X, incx, AP);
+
+
+}
+void dspr(char UPLO, int n, double alpha, double* X, int incx, double* AP)
+{
+	cublasHandle_t handle = (cublasHandle_t)init_cublas();
+	
+	cublasStatus_t error = cublasDspr(handle, convert_fill(UPLO), n, &alpha, X, incx, AP);
+
+
+}
+void cspr(char UPLO, int n, float_complex alpha, float_complex* X, int incx, float_complex* AP)
+{
+	cublasHandle_t handle = (cublasHandle_t)init_cublas();
+	
+	cublasStatus_t error = cublasCspr(handle, convert_fill(UPLO), n, &alpha, X, incx, AP);
+
+
+}
+void zspr(char UPLO, int n, double_complex alpha, double_complex* X, int incx, double_complex* AP)
+{
+	cublasHandle_t handle = (cublasHandle_t)init_cublas();
+	
+	cublasStatus_t error = cublasZspr(handle, convert_fill(UPLO), n, &alpha, X, incx, AP);
+
+
+}
+
+
 
 
 

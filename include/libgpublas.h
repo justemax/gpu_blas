@@ -140,6 +140,15 @@ int gpu_zsyr(char UPLO, int n, double_complex alpha, double_complex* X, int incx
 
 //XSPR
 
+int gpu_sspr(char UPLO, int n, float alpha, float* X, int incx, float* AP);
+
+int gpu_dspr(char UPLO, int n, double alpha, double* X, int incx, double* AP);
+
+int gpu_cspr(char UPLO, int n, float_complex alpha, float_complex* X, int incx, float_complex* AP);
+
+int gpu_zspr(char UPLO, int n, double_complex alpha, double_complex* X, int incx, double_complex* AP);
+
+
 //XSYR2
 
 

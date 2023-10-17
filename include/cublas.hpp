@@ -116,6 +116,18 @@ void ztbsv(char UPLO, char transA, char DIAG, int n, int k, double_complex* A, i
 
 
 
+//XGER
+
+void sger(int m, int n, float alpha, float* X, int incx, float* Y, int incy, float* A, int lda);
+
+void dger(int m, int n, double alpha, double* X, int incx, double* Y, int incy, double* A, int lda);
+
+void cger(int m, int n, float_complex alpha, float_complex* X, int incx, float_complex* Y, int incy, float_complex* A, int lda);
+
+void zger(int m, int n, double_complex alpha, double_complex* X, int incx, double_complex* Y, int incy, double_complex* A, int lda);
+
+
+
 
 
 /*

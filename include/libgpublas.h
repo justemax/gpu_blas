@@ -108,6 +108,15 @@ int gpu_ztrsv(char UPLO, char transA, char DIAG, int n, double_complex* A, int l
 
 //XTBSV
 
+int gpu_stbsv(char UPLO, char transA, char DIAG, int n, int k, float* A, int lda, float* X, int incx);
+
+int gpu_dtbsv(char UPLO, char transA, char DIAG, int n, int k, double* A, int lda, double* X, int incx);
+
+int gpu_ctbsv(char UPLO, char transA, char DIAG, int n, int k, float_complex* A, int lda, float_complex* X, int incx);
+
+int gpu_ztbsv(char UPLO, char transA, char DIAG, int n, int k, double_complex* A, int lda, double_complex* X, int incx);
+
+
 //XGER
 
 //XSYR

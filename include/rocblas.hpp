@@ -107,6 +107,17 @@ void ctrsv(char UPLO, char transA, char DIAG, int n, float_complex* A, int lda, 
 
 void ztrsv(char UPLO, char transA, char DIAG, int n, double_complex* A, int lda, double_complex* X, int incx);
 
+//XTBSV
+
+void stbsv(char UPLO, char transA, char DIAG, int n, int k, float* A, int lda, float* X, int incx);
+
+void dtbsv(char UPLO, char transA, char DIAG, int n, int k, double* A, int lda, double* X, int incx);
+
+void ctbsv(char UPLO, char transA, char DIAG, int n, int k, float_complex* A, int lda, float_complex* X, int incx);
+
+void ztbsv(char UPLO, char transA, char DIAG, int n, int k, double_complex* A, int lda, double_complex* X, int incx);
+
+
 
 
 

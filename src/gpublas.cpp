@@ -221,6 +221,32 @@ int gpu_ztrsv(char UPLO, char transA, char DIAG, int n, double_complex* A, int l
 
 
 
+//XTBSV
+
+int gpu_stbsv(char UPLO, char transA, char DIAG, int n, int k, float* A, int lda, float* X, int incx)
+{
+	stbsv(UPLO, transA, DIAG, n, k, A, lda, X, incx);
+	return 0;
+}
+
+int gpu_dtbsv(char UPLO, char transA, char DIAG, int n, int k, double* A, int lda, double* X, int incx)
+{
+	dtbsv(UPLO, transA, DIAG, n, k, A, lda, X, incx);
+	return 0;
+}
+int gpu_ctbsv(char UPLO, char transA, char DIAG, int n, int k, float_complex* A, int lda, float_complex* X, int incx)
+{
+	ctbsv(UPLO, transA, DIAG, n, k, A, lda, X, incx);
+	return 0;
+}
+int gpu_ztbsv(char UPLO, char transA, char DIAG, int n, int k, double_complex* A, int lda, double_complex* X, int incx)
+{
+	ztbsv(UPLO, transA, DIAG, n, k, A, lda, X, incx);
+	return 0;
+}
+
+
+
 /*****
  * BLAS 3
  * ****/

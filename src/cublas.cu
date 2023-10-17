@@ -397,6 +397,49 @@ void ztrsv(char UPLO, char transA, char DIAG, int n, double_complex* A, int lda,
 
 
 
+//XTBSV
+
+void stbsv(char UPLO, char transA, char DIAG, int n, int k, float* A, int lda, float* X, int incx)
+{
+
+	cublasHandle_t handle = (cublasHandle_t)init_cublas();
+	
+	cublasStatus_t error = cublasStrsv(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), convert_diag(DIAG), n, k, A, lda, X, incx);
+
+
+}
+void dtbsv(char UPLO, char transA, char DIAG, int n, int k, double* A, int lda, double* X, int incx)
+{
+
+	cublasHandle_t handle = (cublasHandle_t)init_cublas();
+	
+	cublasStatus_t error = cublasDtrsv(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), convert_diag(DIAG), n, k, A, lda, X, incx);
+
+
+}
+void ctbsv(char UPLO, char transA, char DIAG, int n, int k, float_complex* A, int lda, float_complex* X, int incx)
+{
+
+	cublasHandle_t handle = (cublasHandle_t)init_cublas();
+	
+	cublasStatus_t error = cublasCtrsv(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), convert_diag(DIAG), n, k, A, lda, X, incx);
+
+
+}
+void ztbsv(char UPLO, char transA, char DIAG, int n, int k, double_complex* A, int lda, double_complex* X, int incx)
+{
+
+	cublasHandle_t handle = (cublasHandle_t)init_cublas();
+	
+	cublasStatus_t error = cublasZtrsv(handle, convert_fill(UPLO), convert_to_cublas_trans(transA), convert_diag(DIAG), n, k, A, lda, X, incx);
+
+
+}
+
+
+
+
+
 
 /******
   BLAS 3

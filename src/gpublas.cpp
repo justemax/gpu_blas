@@ -194,6 +194,31 @@ int gpu_ztpmv(char UPLO, char transA, char DIAG, int n, double_complex* AP, doub
 
 
 
+//XTRSV
+
+
+int gpu_strsv(char UPLO, char transA, char DIAG, int n, float* A, int lda, float* X, int incx)
+{
+	strsv(UPLO, transA, DIAG, n, A, lda, X, incx);
+	return 0;
+}
+
+int gpu_dtrsv(char UPLO, char transA, char DIAG, int n, double* A, int lda, double* X, int incx)
+{
+	dtrsv(UPLO, transA, DIAG, n, A, lda, X, incx);
+	return 0;
+}
+int gpu_ctrsv(char UPLO, char transA, char DIAG, int n, float_complex* A, int lda, float_complex* X, int incx)
+{
+	ctrsv(UPLO, transA, DIAG, n, A, lda, X, incx);
+	return 0;
+}
+int gpu_ztrsv(char UPLO, char transA, char DIAG, int n, double_complex* A, int lda, double_complex* X, int incx)
+{
+	ztrsv(UPLO, transA, DIAG, n, A, lda, X, incx);
+	return 0;
+}
+
 
 
 /*****

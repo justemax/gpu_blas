@@ -93,6 +93,19 @@ void ztpmv(char UPLO, char transA, char DIAG, int n, double_complex* AP, double_
 
 
 
+//XTRSV
+
+
+void strsv(char UPLO, char transA, char DIAG, int n, float* A, int lda, float* X, int incx);
+
+void dtrsv(char UPLO, char transA, char DIAG, int n, double* A, int lda, double* X, int incx);
+
+void ctrsv(char UPLO, char transA, char DIAG, int n, float_complex* A, int lda, float_complex* X, int incx);
+
+void ztrsv(char UPLO, char transA, char DIAG, int n, double_complex* A, int lda, double_complex* X, int incx);
+
+
+
 
 /*
  * BLAS 3

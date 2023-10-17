@@ -458,6 +458,70 @@ void ztpmv(char UPLO, char transA, char DIAG, int n, double_complex* AP, double_
 
 
 
+//XTRSV
+
+
+void strsv(char UPLO, char transA, char DIAG, int n, float* A, int lda, float* X, int incx)
+{
+
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret =rocblas_strsv((rocblas_handle)handle, convert_uplo(UPLO), rocblas_operation_none, convert_diag(DIAG), n,  A, lda, X, incx);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+		
+}
+void dtrsv(char UPLO, char transA, char DIAG, int n, double* A, int lda, double* X, int incx)
+{
+
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret =rocblas_dtrsv((rocblas_handle)handle, convert_uplo(UPLO), rocblas_operation_none, convert_diag(DIAG), n,  A, lda, X, incx);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+		
+}
+void ctrsv(char UPLO, char transA, char DIAG, int n, float_complex* A, int lda, float_complex* X, int incx)
+{
+
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret =rocblas_ctrsv((rocblas_handle)handle, convert_uplo(UPLO), rocblas_operation_none, convert_diag(DIAG), n,  A, lda, X, incx);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+		
+}
+void ztrsv(char UPLO, char transA, char DIAG, int n, double_complex* A, int lda, double_complex* X, int incx)
+{
+
+	void* handle = (rocblas_handle)init_rocblas();
+	rocblas_status ret ;
+
+	ret =rocblas_ztrsv((rocblas_handle)handle, convert_uplo(UPLO), rocblas_operation_none, convert_diag(DIAG), n,  A, lda, X, incx);	
+
+	if(ret != rocblas_status_success)
+	{
+		exit(EXIT_FAILURE);
+	}
+		
+}
+
+
+
+
+
 
 
 /********

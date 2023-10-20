@@ -53,6 +53,7 @@ AC_ARG_WITH([ompblas],
 
 
 AS_IF([ test "x$have_cublas" = "xyes"],[
+       AC_CONFIG_COMMANDS([bash], [cp include/libgpublas_cuda.h include/libgpublas.h], [])
        AC_DEFINE([HAVE_CUBLAS], [1], [Enable cublas])
        case $CXX in
 	       *nvc++*)
@@ -66,6 +67,7 @@ AS_IF([ test "x$have_cublas" = "xyes"],[
 ])
 
 AS_IF([ test "x$have_rocblas" = "xyes"],[
+       AC_CONFIG_COMMANDS([bash], [cp include/libgpublas_hip.h include/libgpublas.h], [])
        AC_DEFINE([HAVE_ROCBLAS], [1], [Enable rocblas])
        case $CXX in
 	       *hipcc*)

@@ -4,6 +4,9 @@
  *
  *
  */
+
+#include "include/cublas.hpp"
+
 #ifdef HAVE_ROCBLAS
 #include "include/rocblas.hpp"
 typedef rocblas_float_complex float_complex ;

@@ -2,9 +2,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <cublas_v2.h>
+#include <cuda_runtime.h>
+#include <cuda_fp16.h>
+
+
 typedef cuComplex float_complex ;
 typedef cuDoubleComplex double_complex ;
-typedef __half half ;
+typedef struct __half half ;
+
 
 
 #ifdef __cplusplus
